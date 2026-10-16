@@ -1,7 +1,7 @@
 // Service worker: offline app shell + push reminders
 const CACHE = 'fieldvisits-v1';
-const SHELL = ['./', 'index.html', 'css/styles.css', 'js/config.js', 'js/data.js', 'js/core.js',
-  'js/pages-field.js', 'js/pages-data.js', 'js/pages-admin.js', 'manifest.json', 'icons/icon-192.png', 'icons/icon-512.png'];
+const SHELL = ['./', 'index.html', 'styles.css', 'config.js', 'data.js', 'core.js',
+  'pages-field.js', 'pages-data.js', 'pages-admin.js', 'manifest.json', 'icon-192.png', 'icon-512.png'];
 
 self.addEventListener('install', (e) => {
   e.waitUntil(caches.open(CACHE).then((c) => c.addAll(SHELL)).then(() => self.skipWaiting()));
@@ -26,7 +26,7 @@ self.addEventListener('push', (e) => {
   let d = {};
   try { d = e.data.json(); } catch (_) { d = { title: 'Reminder', body: e.data ? e.data.text() : '' }; }
   e.waitUntil(self.registration.showNotification(d.title || 'Reminder', {
-    body: d.body || '', icon: 'icons/icon-192.png', badge: 'icons/icon-192.png',
+    body: d.body || '', icon: 'icon-192.png', badge: 'icon-192.png',
     tag: d.tag, data: { url: d.url || './#/followups' },
   }));
 });

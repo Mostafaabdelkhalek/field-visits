@@ -126,7 +126,7 @@ async function enablePush() {
         (await reg.pushManager.subscribe({ userVisibleOnly: true, applicationServerKey: b64ToUint8(CFG.VAPID_PUBLIC_KEY) }));
       await Data.savePushSubscription(sub);
     }
-    reg.showNotification('Reminders are on ✓', { body: `You'll be reminded ${CFG.REMIND_DAYS_BEFORE} days before each follow-up and on the day.`, icon: 'icons/icon-192.png' });
+    reg.showNotification('Reminders are on ✓', { body: `You'll be reminded ${CFG.REMIND_DAYS_BEFORE} days before each follow-up and on the day.`, icon: 'icon-192.png' });
     toast('Reminders enabled on this device');
     route();
   } catch (e) { toast('Could not enable: ' + errMsg(e), 'err'); }
