@@ -102,9 +102,8 @@ const val = (fd, k) => { const v = fd.get(k); return v == null || v === '' ? nul
 
 // ---------- lookups ----------
 async function loadLookups() {
-  const [profiles, areas, products, company, competitors, competitor_products, clients] = await Promise.all([
+  const [profiles, areas, products, competitors, competitor_products, clients] = await Promise.all([
     Data.list('profiles', { order: 'full_name' }),
-    Data.list('company', { order: 'full_name' }),
     Data.list('areas', { order: 'name' }),
     Data.list('products', { order: 'name' }),
     Data.list('competitors', { order: 'name' }),
